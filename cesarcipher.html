@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Cesar Cipher</title>
+</head>
+
+<body style="overflow-x: hidden;">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <div class="row mt-3">
+        <div class="col-sm-3 ml-3">
+            <div id="list-example" class="list-group">
+                <a class="list-group-item list-group-item-action active text-white" href="#">Cesar Cipher</a>
+                <a class="list-group-item list-group-item-action" href="advancedcesar.html">Advanced Cesar Cipher</a>
+                <a class="list-group-item list-group-item-action" href="playfaircipher.html">Play Fair Cipher</a>
+                <a class="list-group-item list-group-item-action" href="VigenereCipher.html">Vigenere Cypher</a>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <img class="card-img-top" src="img/cesar.png" alt="Card image cap">
+                <div class="card-body">
+                    <h2 class="card-title">Cesar Cypher</h2>
+                    <p class="card-text" style="font-size:20px">Each character is encoded by shifting it to 3 places towards it's right</p>
+                    <h4 class="card-title">Type the text you want to encode</h4>
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="cesarinput">
+                    </div>
+                    <div class="mt-3">
+                        <a class="btn btn-primary text-white" id="encodecesar">Encode</a>
+                    </div>
+                    <div id="error" style="color: red">
+                    </div>
+                    <div class="mt-3" style="display: none;" id="resdiv">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <h4>Plain Text</h4></td>
+                                <td id="plaintext"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4>Encoded Text</h4></td>
+                                <td id="encodedtext"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.slim.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/cesar.js"></script>
+</body>
+
+</html>
