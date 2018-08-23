@@ -3,35 +3,43 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Cesar Cipher</title>
+    <title>S DES</title>
 </head>
 
 <body style="overflow-x: hidden;">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    
     <div class="row mt-3">
         <div class="col-sm-3 ml-3">
             <div id="list-example" class="list-group">
-                <a class="list-group-item list-group-item-action active text-white" href="#">Cesar Cipher</a>
+                <a class="list-group-item list-group-item-action" href="cesarcipher.html">Cesar Cipher</a>
                 <a class="list-group-item list-group-item-action" href="advancedcesar.html">Advanced Cesar Cipher</a>
                 <a class="list-group-item list-group-item-action" href="playfaircipher.html">Play Fair Cipher</a>
                 <a class="list-group-item list-group-item-action" href="VigenereCipher.html">Vigenere Cypher</a>
                 <a class="list-group-item list-group-item-action" href="vernam.html">Vernam Cypher</a>
                 <a class="list-group-item list-group-item-action" href="autokey.html">Auto Key Cypher</a>
-                <a class="list-group-item list-group-item-action " href="sdes.html">Simplified DES</a>
+                <a class="list-group-item list-group-item-action active text-white" href="#">Simplified DES</a>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="card">
-                <img class="card-img-top" src="img/cesar.png" alt="Card image cap">
                 <div class="card-body">
-                    <h2 class="card-title">Cesar Cypher</h2>
-                    <p class="card-text" style="font-size:20px">Each character is encoded by shifting it to 3 places towards it's right</p>
-                    <h4 class="card-title">Type the text you want to encode</h4>
+                    <h2 class="card-title">Simpified DES</h2>
+                    <p class="card-text" style="font-size:20px">Info About S DES</p>
+                    <h4 class="card-title">Type the text you want to encode / decode</h4>
                     <div class="input-group input-group-lg">
-                        <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="cesarinput">
+                        <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="input" value="11010010">
                     </div>
+                    <h4 class="card-title mt-3">Key</h4>
+                    <div class="input-group input-group">
+                        <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="key" value="1001110101">
+                    </div>
+                    
+                    <h5 class="mt-3 text-primary"><span style="color: red">Note:</span> Plain text should be 8 bit boolean number</h5>
+                    <h5 class="mt-3 text-primary"><span style="color: white">Note:</span> Key should be 10 bit boolean number</h5>
                     <div class="mt-3">
-                        <a class="btn btn-primary text-white" id="encodecesar">Encode</a>
+                        <a class="btn btn-primary text-white" id="encode">Encode</a>
+                        <a class="btn btn-primary text-white" id="decode">Decode</a>
                     </div>
                     <div id="error" style="color: red">
                     </div>
@@ -39,12 +47,12 @@
                         <table class="table">
                             <tr>
                                 <td>
-                                    <h4>Plain Text</h4></td>
+                                    <h4 id="inputstring">Plain Text</h4></td>
                                 <td id="plaintext"></td>
                             </tr>
                             <tr>
                                 <td>
-                                    <h4>Encoded Text</h4></td>
+                                    <h4 id="resultstring">Encoded Text</h4></td>
                                 <td id="encodedtext"></td>
                             </tr>
                         </table>
@@ -53,10 +61,14 @@
             </div>
         </div>
     </div>
+    <div class="col-sm-10 offset-sm-1">
+        <div id="matrix">
+        </div>
+    </div>
     <script src="js/jquery.slim.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.min.js"></script>
-    <script src="js/cesar.js"></script>
+    <script src="js/sdes.js"></script>
 </body>
 
 </html>

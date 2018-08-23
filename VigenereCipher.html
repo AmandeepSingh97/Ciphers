@@ -8,7 +8,7 @@
 
 <body style="overflow-x: hidden;">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
     <div class="row mt-3">
         <div class="col-sm-3 ml-3">
             <div id="list-example" class="list-group">
@@ -16,13 +16,16 @@
                 <a class="list-group-item list-group-item-action" href="advancedcesar.html">Advanced Cesar Cipher</a>
                 <a class="list-group-item list-group-item-action" href="playfaircipher.html">Play Fair Cipher</a>
                 <a class="list-group-item list-group-item-action active text-white" href="#">Vigenere Cypher</a>
+                <a class="list-group-item list-group-item-action" href="vernam.html">Vernam Cypher</a>
+                <a class="list-group-item list-group-item-action" href="autokey.html">Auto Key Cypher</a>
+                <a class="list-group-item list-group-item-action " href="sdes.html">Simplified DES</a>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">Vigenere Cypher</h2>
-                    <p class="card-text" style="font-size:20px">Info About Play Fair Cipher</p>
+                    <p class="card-text" style="font-size:20px">Info About Vigenere Cipher</p>
                     <h4 class="card-title">Type the text you want to encode / decode</h4>
                     <div class="input-group input-group-lg">
                         <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="input">
@@ -53,6 +56,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="col-sm-10 offset-sm-1">
+        <div id="matrix">
         </div>
     </div>
     <script src="js/jquery.slim.min.js"></script>

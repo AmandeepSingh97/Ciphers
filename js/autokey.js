@@ -1,12 +1,10 @@
-function MakeLength(key, length) {
+function MakeLength(key, input) {
     var l = key.length;
+    var l2 = input.length;
     var m = 0;
-    for (var i = l; i < length; i++) {
-        key += key[m];
+    for (var i = l; i < l2; i++) {
+        key += input[m];
         m++;
-        if (m == l) {
-            m = 0;
-        }
     }
     return key;
 }
@@ -97,7 +95,7 @@ $(document).ready(function() {
         var key = $("#key").val();
         input = input.toUpperCase();
         key = key.toUpperCase();
-        key = MakeLength(key, input.length);
+        key = MakeLength(key, input);
 
 
         if (input == "") {
@@ -123,7 +121,7 @@ $(document).ready(function() {
         var key = $("#key").val();
         input = input.toUpperCase();
         key = key.toUpperCase();
-        key = MakeLength(key, input.length);
+        key = MakeLength(key, input);
 
 
         if (input == "") {
