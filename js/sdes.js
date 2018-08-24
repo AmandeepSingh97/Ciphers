@@ -1,3 +1,32 @@
+function formUi(input)
+{
+    var Ui="<table class='table table-bordered table-hover text-center' style='border-width:5px'><tr>";
+    for(var i=0;i<input.length;i++)
+    {
+        Ui+="<td>"+input[i]+"</td>";
+    }
+    Ui+="</tr></table>";
+    return Ui;
+}
+function formUi2(input,x)
+{
+    var Ui="<table class='table table-bordered table-hover text-center' style='border-width:2px'><tr style='background-color:green;color:white'><th style='background-color:white;color:black;font-size:26px;'>"+x+"</th><th>0</th><th>1</th><th>2</th><th>3</th></tr>";
+    
+    for(var i=0;i<input.length;i++)
+    {
+        Ui+="<tr>";
+        for(var j=0;j<=input[0].length;j++)
+        {
+            if(j!=0)
+            Ui+="<td>"+input[i][j-1]+"</td>";
+            else
+            Ui+="<td style='background-color:blue;color:white'>"+i+"</td>";
+        }
+        Ui+="</tr>";
+    }
+    Ui+="</table>";
+    return Ui;
+}
 function applyP10(input)
 {
     var output="";
@@ -178,31 +207,138 @@ function makelength4(input)
 }
 function encode(input,key)
 {
+    var p10=[3,5,2,7,4,10,1,9,8,6];
+    var p8=[6,3,7,4,8,5,10,9];
+    var ip=[2,6,3,1,4,8,5,7];
+    var ipinv=[4,1,3,5,7,2,8,6];
+    var ep=[4,1,2,3,2,3,4,1];
+    var p4=[2,4,3,1];
+    s0=[[1,0,3,2],[3,2,1,0],[0,2,1,3],[3,1,3,2]];
+    s1=[[0,1,2,3],[2,0,1,3],[3,0,1,0],[3,1,0,3]];
     var output=[];
+    var Ui="";
+
+    Ui+="<h4>P10</h4>";
+    Ui+=formUi(p10);
+
+    Ui+="<h4>Given Key</h4>";
+    Ui+=formUi(key);
+    
     var key=applyP10(key);
+
+    Ui+="<h4>Apply P10 on Key</h4>";
+    Ui+=formUi(key);
+
     key=cls(key,1);
     
+    Ui+="<h4>Circular Left Shift key once</h4>";
+    Ui+=formUi(key);
     var key1=applyP8(key);
+    Ui+="<h4>P8</h4>";
+    Ui+=formUi(p8);
+
+    Ui+="<h4>Apply P8 on key : Sub Key 1</h4>";
+    Ui+=formUi(key1);
+
     key=cls(key,2);
+    Ui+="<h4>Circular Left Shift key twice again using previous shifted key</h4>";
+    Ui+=formUi(key);
+
     var key2=applyP8(key);
+    Ui+="<h4>P8</h4>";
+    Ui+=formUi(p8);
+
+    Ui+="<h4>Apply P8 on key: Sub Key 2</h4>";
+    Ui+=formUi(key2);
+
+    Ui+="<h4>Given Input Text</h4>";
+    Ui+=formUi(input);
+
     input=applyIP(input);
+
+    Ui+="<h4>IP</h4>";
+    Ui+=formUi(ip);
+
+    Ui+="<h4>Apply Ip on Input Text</h4>";
+    Ui+=formUi(input);
+
+    Ui+="<h4>Divide this into two halfs :</h4>";
+        
     leftbits=left(input);
     rightbits=right(input);
-
+    Ui+="<h4>Left Half</h4>";
+    Ui+=formUi(leftbits);
+    Ui+="<h4>Right Half</h4>";
+    Ui+=formUi(rightbits);
+    Ui+="<h4>Choose right half and apply E/p :</h4>";
+    Ui+="<h4>E/P</h4>";
+    Ui+=formUi(ep);
+    
+    
     rightbits_changed=applyep(rightbits);
+    Ui+="<h4>Apply E/P on Right Half</h4>";
+    Ui+=formUi(rightbits_changed);
     rightbits_changed=Xor(rightbits_changed,key1);
+    Ui+="<h4>Xor With Key 1</h4>";
+    
+    Ui+="<h4>key1</h4>";
+    Ui+=formUi(key1);
+    Ui+="<h4>After Xor</h4>";
+    Ui+=formUi(rightbits_changed);
+
+    Ui+="<h4>Divide this into two halfs :</h4>";
+
     left_half=left(rightbits_changed);
+    Ui+="<h4>Left Half</h4>";
+    Ui+=formUi(left_half);
     right_half=right(rightbits_changed);
+    Ui+="<h4>Right Half</h4>";
+    Ui+=formUi(right_half);
+
+    Ui+="<h4>Apply S boxes: </h4>";
+    
+    
+    Ui+=formUi2(s0,"S0");
+
+    
+
+    Ui+=formUi2(s1,"S1");
+    Ui+="<h4>1'st and 4th bit together in Decimal Form act as Row</h4>";
+    Ui+="<h4>2'nd and 3'rd bit together in Decimal Form act as Column</h4>";
+    Ui+="<table class='table table-hover table-bordered text-center'><tr><td style='background-color:green;color:white;font-size:26px'>Outer</td><td style='background-color:blue;color:white;font-size:26px'>Inner</td><td style='background-color:blue;color:white;font-size:26px'>Inner</td><td style='background-color:green;color:white;font-size:26px'>Outer</td></tr></table>";
+    
     s0=applys0(left_half);
     s1=applys1(right_half);
-    
+    Ui+="<h4>For S0 use Left Half</h4>";
+    Ui+=formUi(left_half);
+    Ui+="<h4>Row (outer bits) <span class='fa fa-arrow-circle-right' style='padding-right:10px;'></span>"+left_half[0]+""+left_half[3]+" = "+binaryDecimal(left_half[0]+""+left_half[3])+" </h4>";
+    Ui+="<h4>Column (inner bits) <span class='fa fa-arrow-circle-right' style='padding-right:10px;'></span>"+left_half[1]+""+left_half[2]+" = "+binaryDecimal(left_half[1]+""+left_half[2])+" </h4>";
+    Ui+="<h4>Substitution from S0</h4>";
+    Ui+=formUi(binaryDecimal(s0));
+
+    Ui+="<h4>For S1 use Right Half</h4>";
+    Ui+=formUi(right_half);
+    Ui+="<h4>Row (outer bits) <span class='fa fa-arrow-circle-right' style='padding-right:10px;'></span>"+right_half[0]+""+right_half[3]+" = "+binaryDecimal(right_half[0]+""+right_half[3])+" </h4>";
+    Ui+="<h4>Column (inner bits) <span class='fa fa-arrow-circle-right' style='padding-right:10px;'></span>"+right_half[1]+""+right_half[2]+" = "+binaryDecimal(right_half[1]+""+right_half[2])+" </h4>";
+    Ui+="<h4>Substitution from S1</h4>";
+    Ui+=formUi(binaryDecimal(s1));
     s0=s0+s1;
+
+    
     s0=makelength4(s0);
+    Ui+="<h4>Combine Both in Binary</h4>";
+    Ui+=formUi(s0);
 
     s0=applyp4(s0);
+    Ui+="<h4>P4:</h4>";
+    Ui+=formUi(p4);
 
+    Ui+="<h4>Apply P4</h4>";
+    Ui+=formUi(s0);
     leftbits=Xor(leftbits,s0);
 
+    Ui+="<h4>XOR with Left Half</h4>";
+    Ui+=formUi(leftbits);
     var t=leftbits;
     leftbits=rightbits;
     rightbits=t;
@@ -226,7 +362,7 @@ function encode(input,key)
     leftbits=applyIPinv(leftbits);
 
     output.push(leftbits);
-    output.push("");
+    output.push(Ui);
     return output;
 
 }
