@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Columnar Transposition Cipher</title>
+</head>
+
+<body style="overflow-x: hidden;">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <div class="row mt-3">
+        <div class="col-sm-3 ml-3">
+            <div id="list-example" class="list-group">
+                <a class="list-group-item list-group-item-action" href="cesarcipher.html">Cesar Cipher</a>
+                <a class="list-group-item list-group-item-action" href="advancedcesar.html">Advanced Cesar Cipher</a>
+                <a class="list-group-item list-group-item-action" href="playfaircipher.html">Play Fair Cipher</a>
+                <a class="list-group-item list-group-item-action" href="VigenereCipher.html">Vigenere Cypher</a>
+                <a class="list-group-item list-group-item-action" href="vernam.html">Vernam Cypher</a>
+                <a class="list-group-item list-group-item-action" href="autokey.html">Auto Key Cypher</a>
+                <a class="list-group-item list-group-item-action" href="sdes.html">Simplified DES</a>
+                <a class="list-group-item list-group-item-action active text-white" href="#">Columnar Transposition</a>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Columnar Transposition Cipher</h2>
+                    <p class="card-text" style="font-size:20px">Info About Columnar Transposition Cipher</p>
+                    <h4 class="card-title">Type the text you want to encode / decode</h4>
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="input" value="KEXEGXEFRKXXGSOESX" style="letter-spacing:10px">
+                    </div>
+                    <h4 class="card-title mt-3">Key</h4>
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="key" value="tomato" style="letter-spacing:10px">
+                    </div>
+                    <div class="btn-group btn-group-toggle mt-3" data-toggle="buttons">
+                        <label class="btn btn-primary active">
+                            <input type="radio" name="options" id="option1" value="improper" autocomplete="off" checked>Improper
+                        </label>
+                        <label class="btn btn-success">
+                            <input type="radio" name="options" id="option2" value="proper" autocomplete="off"> Proper
+                        </label>
+                        <label class="btn btn-dark">
+                            <input type="radio" name="options" id="option3" value="key1" autocomplete="off">Key Type 1
+                        </label>
+                    </div>
+                    <div class="mt-3 improper group1">
+                        <h5>Improper Cipher</h5>
+                        <a class="btn btn-primary text-white" id="imencode">Encode</a>
+                        <a class="btn btn-primary text-white" id="imdecode">Decode</a>
+                    </div>
+                    <div class="mt-3 proper group1" style="display: none;">
+                        <h5>Proper Cipher</h5>
+                        <a class="btn btn-success text-white" id="encode">Encode</a>
+                        <a class="btn btn-success text-white" id="decode">Decode</a>
+                    </div>
+                    <div class="mt-3 key1 group1" style="display: none;">
+                        <h5>Key type 1</h5>
+                        <a class="btn btn-dark text-white" id="key1encode">Encode</a>
+                        <a class="btn btn-dark text-white" id="key1decode">Decode</a>
+                    </div>
+                    <div id="error" style="color: red">
+                    </div>
+                    <div class="mt-3" style="display: none;" id="resdiv">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <h4 id="inputstring">Plain Text</h4></td>
+                                <td id="plaintext" style="letter-spacing:10px"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4 id="resultstring">Encoded Text</h4></td>
+                                <td id="encodedtext" style="letter-spacing:10px"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-10 offset-sm-1">
+        <div id="matrix">
+        </div>
+    </div>
+    <script src="js/jquery.slim.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/columnar.js"></script>
+</body>
+
+</html>
